@@ -64,10 +64,11 @@ self.addEventListener('fetch', (event) => {
         throw new Error('ошибка сервера');
       }
       event.waitUntil(cache.put(event.request, response.clone()));
+      console.log('данные с сервера получены');
       return response;
     } catch (e) {
       console.log(e);
-      console.log('проваливаемся в кэш');
+      console.log('Получаем данные из кэша');
       const cachedResponse = await cache.match(event.request);
       if (cachedResponse) {
         return cachedResponse;
