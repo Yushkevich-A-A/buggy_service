@@ -1,0 +1,150 @@
+* {
+  list-style-type: none;
+  text-decoration: none;
+  padding: 0px;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-size: 16px;
+  font-style: normal;
+  font-weight: 400;
+  color: #818181;
+  user-select: none;
+}
+
+body {
+  height: 100%;
+  background-image: url('./../image/patternbg.png');
+}
+
+.widget-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.widget {
+  position: relative;
+  margin-top: 20px;
+  width: 400px;
+  background-color: #fff;
+  border: 1px solid #818181;
+  border-radius: 10px;
+  padding: 15px;
+}
+
+.widget-title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.widget-title_h1 {
+  font-size: 20px;
+}
+
+.widget-title-reload {
+  text-decoration: underline;
+}
+
+.widget-title-reload:hover {
+  text-decoration: none;
+} 
+
+.widget-content {
+  height: 250px;
+}
+
+.wrapper-content-item {
+  margin-top: 20px;
+}
+
+.wrapper-item {
+  background-color: #818181;
+}
+
+.item-date {
+  display: inline-block;
+  min-width: 150px;
+  min-height: 15px;
+  margin-bottom: 5px;
+  font-size: 12px;
+}
+
+.item-info {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.item-info-img {
+  width: 50px;
+  height: 40px;
+  margin-right: 10px;
+}
+
+.item-img {
+  width: 100%;
+}
+
+.item-info-description {
+  width: 100%;
+}
+
+.description-text {
+  width: 100%;
+  min-height: 15px;
+}
+
+.description-text:nth-child(n + 2) {
+  margin-top: 10px;
+}
+
+.widget-error-wrapper {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* background-color: #fff;
+  opacity: 0.95;
+  border-radius: 10px; */
+  margin: 40px;
+}
+
+.widget-error-text {
+  text-align: center;
+  width: 250px;
+  color: black;
+}
+
+.widget-error {
+  position: absolute;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  background-color: #fff;
+  opacity: 0.95;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+
+
+
+
+
+
+
+
+.disable {
+  display: none;
+}
