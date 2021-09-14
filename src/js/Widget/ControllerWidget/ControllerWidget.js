@@ -45,12 +45,15 @@ export default class ControllerWidget {
   async createRequestToServer() {
     try {
       this.requestPending = true;
-      const response = await fetch(`${this.url}getdata`);
+      const response = await fetch(`${this.url}getnews`);
       if (response.status < 200 || response.status >= 300) {
-        this.widget.openErrorConnect();
+        // this.widget.openErrorConnect();
+      } else {
+        const data = await response.json();
+        this.widget.drawContent(data);
       }
     } catch (e) {
-      this.widget.openErrorConnect();
+      // this.widget.openErrorConnect();
     }
     this.requestPending = false;
   }

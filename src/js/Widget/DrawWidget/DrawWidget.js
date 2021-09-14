@@ -105,6 +105,8 @@ export default class DrawWidget {
   }
 
   drawContent(data) {
+    this.contentList.innerHTML = '';
+    this.openContent();
     for (const i of data) {
       this.drawItem(i);
     }
@@ -116,7 +118,6 @@ export default class DrawWidget {
     li.innerHTML = `<div class="item-date">${moment(item.date).format('HH:mm DD:MM:YYYY')}</div>
         <div class="item-info">
           <div class="item-info-img">
-            <img class="item-img" src="./image/a88ca4cdc69aa0d9bc8064f7d36871a4.jpg" alt="">
           </div>
           <div class="item-info-description">
             <p class="description-text">тестовое описание фильма</p>
@@ -124,9 +125,6 @@ export default class DrawWidget {
         </div>`;
 
     this.contentList.appendChild(li);
-
-    const img = li.querySelector('.item-img');
-    img.src = item.src;
     const decript = li.querySelector('.description-text');
     decript.textContent = item.description;
   }

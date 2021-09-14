@@ -41,13 +41,40 @@ self.addEventListener('activate', (event) => {
 });
 
 self.addEventListener('fetch', (event) => {
+  const requesURL = new URL(event.request.url);
+  if(!requesURL.pathname.startsWith('/getnews')) {
+    // при отсутствии сети берем стартовую разметку
+    event.respondWith((async () => {
+      const cache = await caches.open(cacheName);
+      const cachedResponse = await cache.match(event.request);
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+    })());
+    return;
+  }
+
+  // в этом блоке возвращаем результаты запроса или результаты из кеша
   event.respondWith((async () => {
     const cache = await caches.open(cacheName);
-    const cachedResponse = await cache.match(event.request);
-    if (cachedResponse) {
-      return cachedResponse;
-    }
 
-    return fetch(event.request);
-  })());
+    try {
+      const response = await fetch(event.request);
+      if (response.status !== 200) {
+        throw new Error('ошибка сервера');
+      }
+      event.waitUntil(cache.put(event.request, response.clone()));
+      return response;
+    } catch (e) {
+      console.log(e);
+      console.log('проваливаемся в кэш');
+      const cachedResponse = await cache.match(event.request)
+      if (cachedResponse) {
+        return cachedResponse;
+      }
+    }
+    throw new Error('Нет сохранненных данных');
+  })())
 });
+
+;
