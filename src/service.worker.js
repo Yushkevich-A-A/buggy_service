@@ -42,7 +42,7 @@ self.addEventListener('activate', (event) => {
 
 self.addEventListener('fetch', (event) => {
   const requesURL = new URL(event.request.url);
-  if(!requesURL.pathname.startsWith('/getnews')) {
+  if (!requesURL.pathname.startsWith('/getnews')) {
     // при отсутствии сети берем стартовую разметку
     event.respondWith((async () => {
       const cache = await caches.open(cacheName);
@@ -68,13 +68,11 @@ self.addEventListener('fetch', (event) => {
     } catch (e) {
       console.log(e);
       console.log('проваливаемся в кэш');
-      const cachedResponse = await cache.match(event.request)
+      const cachedResponse = await cache.match(event.request);
       if (cachedResponse) {
         return cachedResponse;
       }
     }
     throw new Error('Нет сохранненных данных');
-  })())
+  })());
 });
-
-;
